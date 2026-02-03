@@ -3800,6 +3800,16 @@ input, select, textarea {
 			text-transform: uppercase;
 		}
 
+		#main > .post.post--kiara .actions .button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 300;
+			font-size: 2.5rem;
+			padding: 0.85rem 2.4rem;
+		}
+
 			#main > .post header.major > .date {
 				margin-top: -2rem;
 			}
