@@ -3788,9 +3788,16 @@ input, select, textarea {
 			padding: 8rem 8rem 6rem 8rem ;
 		}
 
-		#main > .post.post--kiara {
-			background-color: #e0dbcb;
-			border-top-color: transparent;
+	#main > .post.post--kiara {
+		background-color: #e0dbcb;
+		border-top-color: transparent;
+	}
+
+		#main > .post.post--kiara header.major h1 {
+			  font-family: 'Montserrat', sans-serif;
+			font-weight: 300; /* Light */
+			letter-spacing: 0.25em;
+			text-transform: uppercase;
 		}
 
 			#main > .post header.major > .date {
