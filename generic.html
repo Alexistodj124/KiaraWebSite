@@ -59,8 +59,7 @@
 									</header>
 
 									<div class="service-filters" role="tablist" aria-label="Filtrar servicios">
-										<button class="service-filter is-active" type="button" data-filter="todas" role="tab" aria-selected="true">Todas</button>
-										<button class="service-filter" type="button" data-filter="mujeres" role="tab" aria-selected="false">Mujeres</button>
+										<button class="service-filter is-active" type="button" data-filter="mujeres" role="tab" aria-selected="true">Mujeres</button>
 										<button class="service-filter" type="button" data-filter="hombres" role="tab" aria-selected="false">Hombres</button>
 										<button class="service-filter" type="button" data-filter="ninas" role="tab" aria-selected="false">Niñas</button>
 									</div>
@@ -324,7 +323,7 @@
 					const applyFilter = (value) => {
 						items.forEach((item) => {
 							const category = item.dataset.category;
-							const visible = value === 'todas' || category === value;
+							const visible = category === value;
 							item.classList.toggle('is-hidden', !visible);
 						});
 					};
@@ -340,6 +339,8 @@
 							applyFilter(button.dataset.filter);
 						});
 					});
+
+					applyFilter('mujeres');
 				})();
 			</script>
 

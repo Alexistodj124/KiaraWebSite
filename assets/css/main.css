@@ -4025,12 +4025,15 @@ input, select, textarea {
 	.service-filters {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		gap: 0.75rem;
 		flex-wrap: wrap;
 		margin: 0 0 2.5rem 0;
 	}
 
 	.service-filter {
+		display: inline-flex;
+		align-items: center;
 		border: 1px solid rgba(244, 233, 223, 0.6);
 		border-radius: 999px;
 		padding: 0.5rem 1.4rem;
@@ -4101,6 +4104,10 @@ input, select, textarea {
 		font-weight: 600;
 		letter-spacing: 0.05rem;
 	}
+
+		.service-list__price::before {
+			content: "Q ";
+		}
 
 	.service-list [data-category].is-hidden {
 		display: none;
