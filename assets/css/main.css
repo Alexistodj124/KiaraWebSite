@@ -3845,7 +3845,7 @@ input, select, textarea {
 			box-shadow: 0 24px 45px rgba(30, 37, 45, 0.18);
 			transform: translateX(-24px);
 			opacity: 0;
-			transition: transform 0.9s ease, opacity 0.9s ease;
+			transition: transform 4.5s ease, opacity 4.5s ease;
 		}
 
 			.kiara-gallery__item:nth-child(2) {
