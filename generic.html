@@ -371,6 +371,9 @@
 				(() => {
 					const filters = document.querySelectorAll('.service-filter');
 					const items = document.querySelectorAll('[data-category]');
+					const validFilters = new Set(
+						Array.from(filters, (button) => button.dataset.filter)
+					);
 
 					const applyFilter = (value) => {
 						items.forEach((item) => {
@@ -380,19 +383,46 @@
 						});
 					};
 
+					const parseHashFilter = () => {
+						const raw = window.location.hash.replace('#', '').trim();
+						if (!raw) return null;
+						if (raw.includes('=')) {
+							return new URLSearchParams(raw).get('filter');
+						}
+						return raw;
+					};
+
+					const getInitialFilter = () => {
+						const params = new URLSearchParams(window.location.search);
+						const queryValue = params.get('filter');
+						const hashValue = parseHashFilter();
+						const value = (queryValue || hashValue || '').toLowerCase();
+						return validFilters.has(value) ? value : filters[0]?.dataset.filter;
+					};
+
+					const setActiveFilter = (value, { updateUrl = false } = {}) => {
+						if (!value || !validFilters.has(value)) return;
+						filters.forEach((btn) => {
+							const isActive = btn.dataset.filter === value;
+							btn.classList.toggle('is-active', isActive);
+							btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+						});
+						applyFilter(value);
+						if (updateUrl) {
+							const url = new URL(window.location);
+							url.searchParams.set('filter', value);
+							url.hash = '';
+							window.history.replaceState({}, '', url);
+						}
+					};
+
 					filters.forEach((button) => {
 						button.addEventListener('click', () => {
-							filters.forEach((btn) => {
-								btn.classList.remove('is-active');
-								btn.setAttribute('aria-selected', 'false');
-							});
-							button.classList.add('is-active');
-							button.setAttribute('aria-selected', 'true');
-							applyFilter(button.dataset.filter);
+							setActiveFilter(button.dataset.filter, { updateUrl: true });
 						});
 					});
 
-					applyFilter('mujeres');
+					setActiveFilter(getInitialFilter());
 				})();
 			</script>
 
